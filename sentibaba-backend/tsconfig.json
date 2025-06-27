@@ -5,6 +5,9 @@
     "rootDir": "./src",
     "outDir": "./dist",
     "strict": true,
-    "esModuleInterop": true
-  }
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true  // ✅ ADD THIS LINE
+  },
+  "include": ["src", "src/types"]
 }
