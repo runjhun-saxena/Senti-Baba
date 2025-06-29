@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from 'express';
 import cors from "cors";
 import dotenv from "dotenv";
 
@@ -15,8 +15,8 @@ app.use(cors()); // ➤ Enable CORS
 app.use(express.json()); // ➤ Parse JSON bodies
 
 // Health check
-app.get("/", (_req, res) => {
-  res.json({ message: "Senti Baba API is live" }); // ✅ changed from send() to json()
+app.get("/", (_req: Request, res: Response) => {
+  res.json({ message: "Senti Baba API is live" });
 });
 
 // Routes
@@ -27,16 +27,16 @@ app.use("/api/judgment", judgmentRoutes);
 app.use("/api/healing", healingRoutes);
 
 // ——— 404 Not Found Handler ———
-app.use((req, res) => {
+app.use((_req: Request, res: Response) => {
   res.status(404).json({ error: "Route not found" });
 });
 
-
-app.use((err: any, req: express.Request, res: express.Response, _next: express.NextFunction) => {
+// ——— Global Error Handler ———
+app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   console.error("Unhandled error:", err);
   res.status(500).json({ error: "Internal Server Error" });
 });
 
-
+// Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server up on http://localhost:${PORT}`));
