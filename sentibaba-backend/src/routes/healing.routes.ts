@@ -1,9 +1,11 @@
-import { Router } from "express";
-import { analyzeJudgment } from "../controllers/judgement.controller";
-import { verifyFirebaseAuth } from "../middleware/auth.middleware";
-import { checkSubscription } from "../middleware/subscription.middleware";
+import { Router, Request, Response } from "express";
+import { healingAdvice } from "../controllers/healing.controller";
+// import { verifyFirebaseAuth } from "../middleware/auth.middleware";
+// import { checkSubscription } from "../middleware/subscription.middleware";
 
 const r = Router();
-r.post("/analyze", analyzeJudgment);
+
+
+r.post("/message", healingAdvice); 
+
 export default r;
-// , verifyFirebaseAuth, checkSubscription,

@@ -7,22 +7,12 @@ export const analyzeConflict = async (
   req: Request,
   res: Response
 ): Promise<Response<any> | void> => {
-  const { roomId } = req.params;
-  const room = getRoomData(roomId);
-
-  if (!room || room.users.length < 2 || !room.messages) {
-    return res.status(400).json({ error: "Not enough data" });
-  }
-
-  const [userA, userB] = room.users;
-  const msgA = room.messages[userA];
-  const msgB = room.messages[userB];
+  const { msgA, msgB } = req.body;
 
   if (!msgA || !msgB) {
-    return res.status(400).json({ error: "Both users must submit messages" });
+    return res.status(400).json({ error: "Both messages are required." });
   }
 
-  // 🧠 You fully control the prompt here
   const prompt = `
 You are an empathetic, GenZ-style relationship coach named Senti Baba.
 
@@ -53,3 +43,4 @@ Now generate your response.
     return res.status(500).json({ error: "Failed to analyze conflict." });
   }
 };
+

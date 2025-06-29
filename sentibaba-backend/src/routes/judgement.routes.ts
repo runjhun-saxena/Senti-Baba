@@ -5,7 +5,7 @@ import { analyzeJudgment } from "../controllers/judgement.controller";
 
 const r = Router();
 
-// Temporarily disabled auth for testing
+
 r.post("/analyze", (req: Request, res: Response) => {
   analyzeJudgment(req, res).catch((err) => {
 	console.error(err);
