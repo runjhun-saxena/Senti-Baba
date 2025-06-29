@@ -1,12 +1,15 @@
-// controllers/conflict.controller.ts
-import { Request, Response} from "express";
-// import { getRoomData } from "../utils/room.utils";
+import express from "express";
 import { getGeminiResponse } from "../services/gemini.service";
 
+interface AnalyzeConflictRequestBody {
+  msgA: string;
+  msgB: string;
+}
+
 export const analyzeConflict = async (
-  req: Request,
-  res: Response,
-): Promise<Response<any> | void> => {
+  req: express.Request<{}, {}, AnalyzeConflictRequestBody>,
+  res: express.Response
+) => {
   const { msgA, msgB } = req.body;
 
   if (!msgA || !msgB) {
@@ -14,17 +17,7 @@ export const analyzeConflict = async (
   }
 
   const prompt = `
-You are an empathetic, GenZ-style relationship coach named Senti Baba.
-
-Two people in a relationship had a disagreement and shared their sides.
-
-Write a short, 150-word max response that:
-- Acknowledges both stories
-- Encourages mutual understanding
-- Uses a GenZ tone (light, slightly playful, empathetic)
-- Ends with a helpful question like:
-  - “Want ideas for a healthy conversation starter?”
-  - “Should I suggest an activity to help you reconnect?”
+You are an empathetic, GenZ-style relationship coach named Senti Baba...
 
 **Partner A’s Story:**  
 ${msgA}
@@ -43,4 +36,3 @@ Now generate your response.
     return res.status(500).json({ error: "Failed to analyze conflict." });
   }
 };
-
