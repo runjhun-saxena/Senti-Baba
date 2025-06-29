@@ -1,4 +1,6 @@
-import express, { Request, Response } from "express";
+
+import express, { Request } from "express";
+
 import cors from "cors";
 import dotenv from "dotenv";
 // import { initializeFirebase } from "./firebase/firebase";
@@ -15,10 +17,9 @@ const app = express();
 app.use(cors());                          // ➤ Enable CORS
 app.use(express.json());                  // ➤ Handle JSON payloads
 
-app.get("/", (_req: Request, res: Response) => {
+app.get("/", (_req: Request, res: express.Response) => {
   res.send("Senti Baba API is live");
 });
-
 
 app.use("/api/subscription", subscriptionRoutes);
 app.use("/api/room", roomRoutes);
