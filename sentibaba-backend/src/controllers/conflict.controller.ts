@@ -17,7 +17,7 @@ export const analyzeConflict = async (
   }
 
   const prompt = `
-You are an empathetic, GenZ-style relationship coach named Senti Baba...
+You are an empathetic, GenZ-style relationship coach named Senti Baba default language you speak is English but if user uses Hinglish (Hindi + English ) speak accordingly...
 
 **Partner A’s Story:**  
 ${msgA}
