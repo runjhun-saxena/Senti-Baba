@@ -1,11 +1,11 @@
 // controllers/conflict.controller.ts
-import { Request, Response } from "express";
-import { getRoomData } from "../utils/room.utils";
+import { Request, Response} from "express";
+// import { getRoomData } from "../utils/room.utils";
 import { getGeminiResponse } from "../services/gemini.service";
 
 export const analyzeConflict = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<Response<any> | void> => {
   const { msgA, msgB } = req.body;
 
