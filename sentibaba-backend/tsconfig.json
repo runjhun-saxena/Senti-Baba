@@ -1,15 +1,12 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "module": "commonjs",
-    "rootDir": "./src",
+    "module": "CommonJS",
     "outDir": "./dist",
-    "strict": true,
+    "rootDir": "./src",
     "esModuleInterop": true,
-    "resolveJsonModule": true,
-     "moduleResolution": "node",
-    "skipLibCheck": true,
-    "types": ["node", "express"]
+    "strict": true,
+    "skipLibCheck": true
   },
-  "include": ["src", "src/types"]
+  "include": ["src"]
 }
