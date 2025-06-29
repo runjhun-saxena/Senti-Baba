@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { createRoom, joinRoom, saveMessage } from "../controllers/room.controller";
-import { verifyFirebaseAuth } from "../middleware/auth.middleware";
-import { checkSubscription } from "../middleware/subscription.middleware";
+// import { verifyFirebaseAuth } from "../middleware/auth.middleware";
+// import { checkSubscription } from "../middleware/subscription.middleware";
 
 const r = Router();
 r.post("/create",createRoom);
