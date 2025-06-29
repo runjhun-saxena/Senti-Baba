@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 // import { initializeFirebase } from "./firebase/firebase";
@@ -8,16 +8,17 @@ import conflictRoutes from "./routes/conflict.routes";
 import judgmentRoutes from "./routes/judgement.routes";
 import healingRoutes from "./routes/healing.routes";
 
-dotenv.config();                          // ➤ Load .env
-// initializeFirebase();                    // ➤ Init Firebase SDK
+dotenv.config();                         
+// initializeFirebase();                    
 
 const app = express();
-app.use(cors());                          // ➤ Enable CORS
-app.use(express.json());                  // ➤ Handle JSON payloads
+app.use(cors());                        
+app.use(express.json());                  
 
-app.get("/", (_req: Request, res: Response) => {
+app.get("/", (_req, res: express.Response<string>) => {
   res.send("Senti Baba API is live");
 });
+
 
 
 app.use("/api/subscription", subscriptionRoutes);
